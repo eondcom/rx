@@ -1,0 +1,199 @@
+.hi-sns-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.hi-sns-item .hi-sns-left, .hi-sns-item .hi-sns-right {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+@media (min-width: 639px) {
+  .hi-sns-item .hi-sns-left {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .hi-sns-item .hi-sns-left {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 15px;
+  }
+}
+
+@media (min-width: 639px) {
+  .hi-sns-item .hi-sns-right {
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .hi-sns-item .hi-sns-right {
+    -webkit-box-flex: 0;
+        -ms-flex: 0 0 100%;
+            flex: 0 0 100%;
+  }
+  .hi-sns-item .hi-sns-right .hi.flex-right {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
+.hi-sns-title {
+  opacity: 0.7;
+}
+
+.hi-sns-title.on {
+  opacity: 0.9;
+}
+
+.hi-sns-title .hi-icon {
+  height: 14px;
+}
+
+.hi-sns-title .hi-sns-name {
+  margin-left: 5px;
+}
+
+.hi-sns-status {
+  display: inline-block;
+  color: #8c8c8c;
+  font-size: 14px;
+  text-decoration: none !important;
+  margin-right: 10px;
+}
+
+.hi-sns-status a {
+  color: #5d5d5d;
+  font-weight: bold;
+}
+
+.hi-sns-button {
+  display: inline-block;
+  width: 200px;
+  padding: 8px 18px;
+  color: white !important;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none !important;
+  border-radius: 500px;
+  background-color: white;
+  border: 1px solid white;
+}
+
+.hi-sns-button .hi-icon {
+  height: 14px;
+}
+
+.hi-sns-button .hi-sns-name {
+  font-size: 14px;
+  margin-left: 5px;
+}
+
+.hi-sns-button.twitter {
+  color: #56aef7 !important;
+  border-color: #56aef7;
+}
+
+.hi-sns-button.facebook {
+  color: white !important;
+  background-color: #4378e2;
+}
+
+.hi-sns-button.google {
+  color: white !important;
+  background-color: #cc4137;
+}
+
+.hi-sns-button.naver {
+  color: white !important;
+  background-color: #4aad39;
+}
+
+.hi-sns-button.kakao {
+  color: #713d3d !important;
+  background-color: #f7e542;
+}
+
+.hi.toggle {
+  display: none;
+}
+
+.hi.toggle + .hi.toggle-button {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+  border-radius: 500px;
+  -webkit-box-sizing: content-box !important;
+          box-sizing: content-box !important;
+  background-color: #f8f8f8;
+  border: 1px solid #ededed;
+  -webkit-transition: 0.4s ease-in-out;
+  transition: 0.4s ease-in-out;
+}
+
+.hi.toggle + .hi.toggle-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30px;
+  height: 30px;
+  -webkit-transform: translateX(100%);
+          transform: translateX(100%);
+  border-radius: 500px;
+  background-color: white;
+  -webkit-box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  -webkit-transition: 0.2s ease-in-out;
+  transition: 0.2s ease-in-out;
+}
+
+.hi.toggle + .hi.toggle-button:hover::before {
+  -webkit-box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+}
+
+.hi.toggle:checked + .hi.toggle-button {
+  border-color: #38d9a9;
+  -webkit-box-shadow: 0 0 0 20px #38d9a9 inset;
+          box-shadow: 0 0 0 20px #38d9a9 inset;
+}
+
+.hi.toggle:checked + .hi.toggle-button::before {
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+/*# sourceMappingURL=hios.sns.css.map */

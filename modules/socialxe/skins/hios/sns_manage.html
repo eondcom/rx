@@ -1,0 +1,132 @@
+<include target="_header.html" />
+
+<load target="/modules/admin/tpl/js/admin.min.js" />
+<load target="/modules/admin/tpl/js/jquery.tmpl.js" />
+
+<include target="../../../member/skins/hios_member_skin/common_header.html" />
+
+<form id="clearForm" action="./" method="POST" style="margin:0">
+	<input type="hidden" name="module" value="socialxe" />
+	<input type="hidden" name="act" value="procSocialxeSnsClear" />
+	<input type="hidden" name="service" id="service1" value="" />
+</form>
+<form id="linkageForm" action="./" method="POST" style="margin:0">
+	<input type="hidden" name="module" value="socialxe" />
+	<input type="hidden" name="act" value="procSocialxeSnsLinkage" />
+	<input type="hidden" name="service" id="service2" value="" />
+</form>
+
+<div class="hi clearfix">
+  <div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == ''" class="hi notice-info margin-top-small {$XE_VALIDATOR_MESSAGE_TYPE}">
+    <p>{$XE_VALIDATOR_MESSAGE}</p>
+  </div>
+  
+  <ul class="hi list list-divider">
+    <li loop="$sns_services=> $key, $val">
+      <div class="hi-sns-item">
+        <div class="hi-sns-left">
+          <div class="hi-sns-title<!--@if($val->register)--> on<!--@end-->">
+            <!--@if($val->service == 'twitter')-->
+            <i class="fab fa-{$val->service}"></i>
+            <span class="hi-sns-name">{ucwords($val->service)}</span>
+            <!--@elseif($val->service == 'facebook')-->
+            <i class="fab fa-{$val->service}"></i>
+            <span class="hi-sns-name">{ucwords($val->service)}</span>
+            <!--@elseif($val->service == 'google')-->
+            <i class="fab fa-{$val->service}"></i>
+            <span class="hi-sns-name">{ucwords($val->service)}</span>
+            <!--@elseif($val->service == 'naver')-->
+            <img class="hi-icon naver" src="assets/images/ic_brand_naver.svg" alt="naver">
+            <span class="hi-sns-name">{ucwords($val->service)}</span>
+            <!--@elseif($val->service == 'kakao')-->
+            <img class="hi-icon kakao" src="assets/images/ic_brand_kakao.svg" alt="naver">
+            <span class="hi-sns-name">{ucwords($val->service)}</span>
+            <!--@end-->
+          </div>
+        </div>
+        
+        <div class="hi-sns-right">
+          <div class="hi flex flex-right flex-middle">
+            <div class="hi-sns-status">{$val->sns_status}</div>
+
+            <!--@if($val->service == 'twitter')-->
+  
+            <a class="hi-sns-button {$val->service}" href="{$val->auth_url}"|cond="!$val->register" onclick="if(confirm('{$lang->confirm_clear_sns_service}'))clearSns('{$val->service}');return false;"|cond="$val->register">
+              <i class="fab fa-{$val->service}"></i>
+  
+              <span class="hi-sns-name">
+                <!--@if($val->register)-->
+                연결 {$lang->sns_clear}
+                <!--@elseif(!$val->register)-->
+                트위터로 연결하기
+                <!--@end-->
+              </span>
+            </a>
+  
+            <!--@elseif($val->service == 'facebook')-->
+  
+            <a class="hi-sns-button {$val->service}" href="{$val->auth_url}"|cond="!$val->register" onclick="if(confirm('{$lang->confirm_clear_sns_service}'))clearSns('{$val->service}');return false;"|cond="$val->register">
+              <i class="fab fa-{$val->service}"></i>
+  
+              <span class="hi-sns-name">
+                <!--@if($val->register)-->
+                연결 {$lang->sns_clear}
+                <!--@elseif(!$val->register)-->
+                페이스북으로 연결하기
+                <!--@end-->
+              </span>
+            </a>
+  
+            <!--@elseif($val->service == 'google')-->
+  
+            <a class="hi-sns-button {$val->service}" href="{$val->auth_url}"|cond="!$val->register" onclick="if(confirm('{$lang->confirm_clear_sns_service}'))clearSns('{$val->service}');return false;"|cond="$val->register">
+              <i class="fab fa-{$val->service}"></i>
+              
+              <span class="hi-sns-name">
+                <!--@if($val->register)-->
+                연결 {$lang->sns_clear}
+                <!--@elseif(!$val->register)-->
+                구글로 연결하기
+                <!--@end-->
+              </span>
+            </a>
+  
+            <!--@elseif($val->service == 'naver')-->
+  
+            <a class="hi-sns-button {$val->service}" href="{$val->auth_url}"|cond="!$val->register" onclick="if(confirm('{$lang->confirm_clear_sns_service}'))clearSns('{$val->service}');return false;"|cond="$val->register">
+              <img class="hi-icon naver" src="assets/images/btn_brand_naver.svg" alt="naver">
+              
+              <span class="hi-sns-name">
+                <!--@if($val->register)-->
+                연결 {$lang->sns_clear}
+                <!--@elseif(!$val->register)-->
+                네이버로 연결하기
+                <!--@end-->
+              </span>
+            </a>
+  
+            <!--@elseif($val->service == 'kakao')-->
+  
+            <a class="hi-sns-button {$val->service}" href="{$val->auth_url}"|cond="!$val->register" onclick="if(confirm('{$lang->confirm_clear_sns_service}'))clearSns('{$val->service}');return false;"|cond="$val->register">
+              <img class="hi-icon kakao" src="assets/images/btn_brand_kakao.svg" alt="kakao">
+              
+              <span class="hi-sns-name">
+                <!--@if($val->register)-->
+                연결 {$lang->sns_clear}
+                <!--@elseif(!$val->register)-->
+                카카오로 연결하기
+                <!--@end-->
+              </span>
+            </a>
+            <!--@end-->
+            
+            <input id="{$val->service}" class="hi toggle" type="checkbox" name="linkage" value="{$val->service}" onclick="linkageSns('{$val->service}');return false;" title="{$lang->about_linkage_sns}" checked="checked"|cond="$val->linkage=='Y'" />
+            <label for="{$val->service}" class="hi toggle-button"></label>
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<include target="../../../member/skins/hios_member_skin/common_footer.html" />

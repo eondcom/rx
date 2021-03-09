@@ -1,0 +1,46 @@
+<!--<include target="../../../member/skins/default/common_header.html" />-->
+<include target="./common_header.html" />
+<!--.signup_findaccount_wrap .signup_findaccount .signup_content-->
+<style>
+
+	.signup_content .message {
+		position:inherit;
+		margin:inherit;
+		padding:0;
+		border:inherit;
+		border-radius:inherit;
+		line-height:inherit;
+		font-size:inherit;
+		text-shadow:inherit;
+		background-color:inherit;
+	}
+	.btn,
+	.xm .input-append .add-on:last-child, .xm .input-append .btn:last-child, .xm .input-append .btn-group:last-child>.dropdown-toggle{border-radius:0;}
+</style>
+<div class="signup_findaccount_wrap">
+	<div class="login-content-wrap">
+		<div class="signup_findaccount">
+			<h1>{$lang->confirm_email_address}</h1>
+			<div class="signup_content">
+				<div class="message">
+					<p>{sprintf($lang->msg_not_confirm_email_sns, ucwords($service))}<block cond="$config->mail_auth_valid_hour"><br>({sprintf($lang->msg_mail_auth_valid_hour, $config->mail_auth_valid_hour)})</block></p>
+				</div>
+
+				<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/socialxe/confirm_email/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+					<p>{$XE_VALIDATOR_MESSAGE}</p>
+				</div>
+				<form ruleset="confirmEmailAddress" action="./" method="post">
+					<input type="hidden" name="module" value="socialxe" />
+					<input type="hidden" name="act" value="procSocialxeConfirmMail" />
+					<input type="hidden" name="xe_validator_id" value="modules/socialxe/confirm_email/1" />
+					<span class="input-append">
+		<input type="email" id="email_address" name="email_address" value="" required placeholder="{$lang->email_address}" title="{$lang->email_address}" />
+		<input type="submit" value="{$lang->cmd_confirm}" class="btn" />
+	</span>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</div>
+<include target="../../../member/skins/default/common_footer.html" />
