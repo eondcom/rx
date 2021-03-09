@@ -1,0 +1,101 @@
+<load target="../../module/tpl/js/module_list.js" usecdn="true" />
+<load target="js/zzz_menu_new.admin.js" />
+<div class="x_page-header">
+	<h1>{$lang->menu_new}</h1>
+</div>
+
+<div cond="$XE_VALIDATOR_MESSAGE && $XE_VALIDATOR_ID == 'modules/zzz_menu_new/tpl/insert_config/1'" class="message {$XE_VALIDATOR_MESSAGE_TYPE}">
+	<p>{$XE_VALIDATOR_MESSAGE}</p>
+</div>
+<form action="./" method="post" class="x_form-horizontal" ruleset="insertConfig">
+	<input type="hidden" name="module" value="zzz_menu_new" />
+	<input type="hidden" name="act" value="procZzz_menu_newAdminSaveConfig" />
+	<input type="hidden" name="xe_validator_id" value="modules/zzz_menu_new/tpl/insert_config/1" />
+	<input type="hidden" name="success_return_url" value="{getRequestUriByServerEnviroment()}" />
+	
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->cmd_remake_cache}</label>
+		<div class="x_controls">
+			<button onclick="doRemakeCache();return false;" class="x_btn">{$lang->cmd_remake_cache}</button>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->use_menu_new}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" name="use_menu_new" value="Y" checked|cond="$config->use_menu_new == 'Y'" /> {$lang->use}</label>
+			<label class="x_inline"><input type="radio" name="use_menu_new" value="N" checked|cond="$config->use_menu_new != 'Y'" /> {$lang->notuse}</label>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->use_comment}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" name="use_comment" value="Y" checked|cond="$config->use_comment == 'Y'" /> {$lang->use}</label>
+			<label class="x_inline"><input type="radio" name="use_comment" value="N" checked|cond="$config->use_comment != 'Y'" /> {$lang->notuse}</label>
+			<p class="x_help-block">{$lang->about_use_comment}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="duration_new">{$lang->duration_new}</label>
+		<div class="x_controls">
+			<input type="text" name="duration_new" id="duration_new" value="{$config->duration_new}" class="x_input-mini" />
+			<span class="x_help-inline">{$lang->about_duration_new}</span>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->up_new}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" name="up_new" value="Y" checked|cond="$config->up_new == 'Y'" /> {$lang->use}</label>
+			<label class="x_inline"><input type="radio" name="up_new" value="N" checked|cond="$config->up_new != 'Y'" /> {$lang->notuse}</label>
+			<p class="x_help-block">{$lang->about_up_new}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label">{$lang->text_new}</label>
+		<div class="x_controls">
+			<label class="x_inline"><input type="radio" name="text_new" value="Y" checked|cond="$config->text_new == 'Y'" /> {$lang->use}</label>
+			<label class="x_inline"><input type="radio" name="text_new" value="N" checked|cond="$config->text_new != 'Y'" /> {$lang->notuse}</label>
+			<p class="x_help-block">{$lang->about_text_new}</p>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="new_image">{$lang->new_image}</label>
+		<div class="x_controls">
+			<input type="text" name="new_image" id="new_image" value="{$config->new_image}" class="x_input-large" />
+			<span class="x_help-block">{$lang->about_new_image}</span>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="new_image_comment">{$lang->new_image_comment}</label>
+		<div class="x_controls">
+			<input type="text" name="new_image_comment" id="new_image_comment" value="{$config->new_image_comment}" class="x_input-large" />
+			<span class="x_help-block">{$lang->about_new_image_comment}</span>
+		</div>
+	</div>
+	<div class="x_control-group">
+		<label class="x_control-label" for="new_image_comment">{$lang->select_module}</label>
+		<div class="x_controls">
+			<p>
+				{$lang->about_select_module}
+				<select name="select_module_mode">
+					<option value="in"<!--@if($config->select_module_mode=='in')--> selected="selected"<!--@end-->>{$lang->select_module_in}</option>
+					<option value="out"<!--@if($config->select_module_mode=='out')--> selected="selected"<!--@end-->>{$lang->select_module_out}</option>
+				</select><br />
+				{$lang->about_select_module2}
+			</p>
+			
+			<input type="hidden" name="module_srl_list" value="{$config->module_srl_list}" />
+			<select class="modulelist_selected" size="8" multiple="multiple" style="vertical-align:top;margin-bottom:5px"></select>
+			<br>
+			<a href="#" type="button" onclick="return false" id="__module_srl_list_module_srl_list" class="x_btn moduleTrigger" data-multiple="true" style="margin:0 -5px 0 0;border-radius:2px 0 0 2px">{$lang->cmd_add}</a>
+			<button type="button" class="x_btn modulelist_up" style="margin:0 -5px 0 0;border-radius:0">{$lang->cmd_move_up}</button>
+			<button type="button" class="x_btn modulelist_down" style="margin:0 -5px 0 0;border-radius:0">{$lang->cmd_move_down}</button>
+			<button type="button" class="x_btn modulelist_del" style="border-radius:0 2px 2px 0">{$lang->cmd_delete}</button>
+			<script>
+				xe.registerApp(new xe.ModuleListManager('module_srl_list'));
+			</script>
+		</div>
+	</div>
+	<div class="btnArea">
+		<button type="submit" class="x_btn x_btn-primary x_pull-right">{$lang->cmd_registration}</button>
+	</div>
+</form>

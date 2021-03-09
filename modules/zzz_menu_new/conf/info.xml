@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module version="0.2">
+    <title xml:lang="ko">메뉴에 새글 표시</title>
+    <title xml:lang="jp">メニューに新文書表示</title>
+    <description xml:lang="ko">새 글/댓글이 있을 경우 메뉴에 표시해 줍니다.</description>
+    <description xml:lang="jp">新しい文/コメントがある場合メニューに表示します.</description>
+    <version>1.7.0</version>
+    <date>2013-04-02</date>
+    <category>construction</category>
+
+    <author email_address="sinsy200@gmail.com" link="http://etcutils.xpressengine.net">
+        <name xml:lang="ko">난다날아</name>
+        <name xml:lang="jp">flysky</name>
+    </author>
+    <author>
+        <name xml:lang="ko">일어번역 : HIRO</name>
+        <name xml:lang="jp">Japanese Translate : HIRO</name>
+    </author>
+</module>
