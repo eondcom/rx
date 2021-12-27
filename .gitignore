@@ -1,0 +1,59 @@
+# # Project exclude paths
+# /_backup/
+# /common/
+# /addons/
+# /classes/
+# /config/
+# /files/
+# /formmail_noajax/
+# /layouts/
+# /m.layouts/
+# /mail/
+# /mail2/
+# /mail3/
+# /mail4/
+# /mail6/
+# /misc/
+# /modules/
+# /parser
+# /simplehtmldom/
+# /smtp
+# /vendor/
+# /widgets/
+# /widgetstyles/
+# /.idea/
+#
+# # !addons/
+#
+#
+# # ignore node dependency directories
+# node_modules/
+#
+# # ignore log files and databases
+# *.log
+# *.sql
+# *.sqlite
+# *.zip
+# .htaccess
+# .editorconfig
+# adminer.php
+# codeception.dist.yml
+# composer.json
+# composer.lock
+# CONTRIBUTING.md
+# COPYRIGHT
+# dst.php
+# eond.md
+# index.php
+# LICENSE
+# README.md
+# SECURITY.md
+# sub-xe.conf
+# test.php
+# test2.php
+
+*
+!layouts/el_imin/
+!modules/board/skins/eb_imin/
+!modules/contents/skins/ec_imin/
+!.gitignore
